@@ -13,7 +13,11 @@ const config: GatsbyConfig = {
     resolve: 'gatsby-source-filesystem',
     options: {
       "name": "images",
-      "path": "./src/images/"
+      "path": "./src/images/",
+      fonts: [
+        `Poppins`,
+      ],
+      display: 'swap'
     },
     __key: "images"
   }]
