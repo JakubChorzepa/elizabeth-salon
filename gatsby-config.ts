@@ -26,7 +26,7 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-google-fonts',
         options: {
           fonts: [
-            `Poppins`,
+            `Poppins\:400,500,700`,
           ],
         display: 'swap'
       },
