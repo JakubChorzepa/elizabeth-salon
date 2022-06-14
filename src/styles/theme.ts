@@ -8,7 +8,7 @@ const theme = {
     size: {
       xs: '.9rem',
       s: '1.6rem',
-      m: '2.6rem',
+      m: '2.2rem',
       l: '4.2rem',
       xl: '7.2rem',
     },

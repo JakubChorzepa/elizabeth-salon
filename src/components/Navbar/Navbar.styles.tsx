@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import { Link } from 'gatsby';
+
+type StyledSideBarProps = {
+  isOpen: boolean
+} 
 
 export const NavWrapper = styled.nav`
   display: flex;
@@ -11,11 +16,8 @@ export const NavWrapper = styled.nav`
 export const LogoImage = styled.div`
   display: block;
   margin: 30px;
-  width: 150px;
-
-  @media screen and (max-width: 768px) {
-    width: 90px;
-    margin: 40px 10px 0 10px;
+  @media screen and (max-width: 1000px) {
+    margin: 30px 0px;
   }
 `
 
@@ -23,20 +25,68 @@ export const NavLinksWrapper = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: row;
+
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+`
+
+export const StyledLink = styled(Link)`
+   text-decoration: none;
+   cursor: pointer;
+   padding: 15px;
+   font-weight: 500;
+
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+    
+`;
+
+export const StyledNavbarLink = styled(StyledLink)`
+  color: ${(({ theme }) => theme.colors.text) };
+  font-size: ${(({ theme }) => theme.font.s) };
+  transition: color .15s ease-in-out;
+  margin: 0 40px;
+
+  &:hover {
+      color: ${(({ theme }) => theme.colors.primary)};
+    }
 `
 
 export const PhoneNumber = styled.div`
   color: ${(({ theme }) => theme.colors.text) };
-   cursor: pointer;
-   padding: 15px;
-   margin: 0 40px;
-   font-weight: 500;
-   transition: color .15s ease-in-out;
-   border: none;
-   background-color: transparent;
-   font: ${(({ theme }) => theme.font.size.s)} 500;
+  padding: 15px;
+  margin: 0 20px;
+  font-weight: 500;
+  font: ${(({ theme }) => theme.font.size.s)} 500;
 
-   &:hover {
-      color: ${(({ theme }) => theme.colors.primary)};
-    }
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+`
+
+export const SideBar = styled.div<StyledSideBarProps>`
+  height: 100vh;
+  width: 100vw;
+  background-color: ${(({ theme }) => theme.colors.primary)};
+  position: fixed;
+  top: 0;
+  right: ${(({ isOpen }) => isOpen ? '0': '100vw'  )};
+  transition: right 0.35s ease-in-out;
+  z-index: 10;
+`
+
+export const SideBarLinkWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 25vh;
+`
+
+export const StyledSideBarLink = styled(StyledLink)`
+  color: #fff;
+  font-size: ${(({ theme }) => theme.font.size.m)};
+  font-weight: 400;
+  margin: 20px 0;
 `
