@@ -16,7 +16,6 @@ const StyledHamburger = styled.button`
   background: none;
   padding: 20px;
   margin: 0 20px;
-  cursor: pointer;
   z-index: 100;
 
   @media screen  and (max-width: 280px){

@@ -11,6 +11,8 @@ export const NavWrapper = styled.nav`
   align-items: center;
   justify-content: space-between;
   width: 100vw;
+  z-index: 999;
+  top: 0;
 `
 
 export const LogoImage = styled.div`
@@ -33,7 +35,6 @@ export const NavLinksWrapper = styled.ul`
 
 export const StyledLink = styled(Link)`
    text-decoration: none;
-   cursor: pointer;
    padding: 15px;
    font-weight: 500;
 
@@ -48,6 +49,7 @@ export const StyledNavbarLink = styled(StyledLink)`
   font-size: ${(({ theme }) => theme.font.s) };
   transition: color .15s ease-in-out;
   margin: 0 40px;
+  cursor: pointer;
 
   &:hover {
       color: ${(({ theme }) => theme.colors.primary)};
@@ -55,7 +57,6 @@ export const StyledNavbarLink = styled(StyledLink)`
 `
 
 export const PhoneNumber = styled.div`
-  color: ${(({ theme }) => theme.colors.text) };
   padding: 15px;
   margin: 0 20px;
   font-weight: 500;
@@ -89,4 +90,10 @@ export const StyledSideBarLink = styled(StyledLink)`
   font-size: ${(({ theme }) => theme.font.size.m)};
   font-weight: 400;
   margin: 20px 0;
+`
+
+export const SidebarPhoneNumber = styled.div`
+  color: #fff;
+  font-size: ${(({ theme }) => theme.font.size.s)};
+  margin: 50px 0;
 `

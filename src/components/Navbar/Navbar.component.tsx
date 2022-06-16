@@ -9,7 +9,8 @@ import {
     StyledNavbarLink,
     SideBar,
     SideBarLinkWrapper,
-    StyledSideBarLink
+    StyledSideBarLink,
+    SidebarPhoneNumber
   } from './Navbar.styles';
 
 import { StaticImage } from 'gatsby-plugin-image';
@@ -50,6 +51,7 @@ const Navbar = () => {
         <SideBarLinkWrapper>
           <StyledSideBarLink to='/kontakt'>Kontakt</StyledSideBarLink>
           <StyledSideBarLink to='/cennik'>Cennik</StyledSideBarLink>
+          <SidebarPhoneNumber>(+48) 602-137-250</SidebarPhoneNumber>
         </SideBarLinkWrapper>   
       </SideBar>
     </NavWrapper>
