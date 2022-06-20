@@ -4,10 +4,17 @@ import {
         HeroSection,
         HeroText,
         FlowerImageWrapper,
-        HeroImageWrapper
+        HeroImageWrapper,
+        OfferSection
       } from "../styles/index.styles"
+import Header from '../components/Header/Header.component';
+import SwiperCards from '../components/SwiperCards/SwiperCards.component';
 import { StaticImage } from "gatsby-plugin-image";
+import styled from "styled-components";
 
+const StyledHeader = styled(Header)`
+  margin-top: 50px;
+`
 
 // markup
 const IndexPage = () => {
@@ -27,10 +34,15 @@ const IndexPage = () => {
             <StaticImage 
               src='../images/FlowerPattern.png'
               alt="logo salonu elizabeth pisane różową czcionką" 
-              height={350}
             />
           </FlowerImageWrapper>
         </HeroSection>
+        <OfferSection>
+          <StyledHeader>
+            Oferta
+          </StyledHeader>
+          <SwiperCards />
+        </OfferSection>
       </>
     </Layout>
   )

@@ -29,7 +29,7 @@ export const HeroText = styled.h1`
 export const FlowerImageWrapper = styled.div`
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 10px;
   
   @media screen and (max-height: 600px) {
     right: 0;
@@ -52,4 +52,12 @@ export const HeroImageWrapper = styled.div`
   @media screen and (max-width: 1500px){
     display: none;
   }
+`
+
+export const OfferSection = styled.section`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `
