@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Pagination, Navigation } from 'swiper'
 import styled from 'styled-components'
-import { StaticImage } from 'gatsby-plugin-image'
 import { graphql, useStaticQuery } from 'gatsby'
 
 import 'swiper/css'
@@ -25,10 +24,13 @@ type SliderItemProps = {
 }
 
 const SliderItem = styled.div<SliderItemProps>`
+  position: relative;
   margin: 0 auto;
-  height: 60vh;
+  min-height: 60vh;
   width: 60%;
   border-radius: 20px;
+  
+  z-index: 999;
   background-color: ${(({ isActive }) => isActive ? '#D64ACE' : '#F5F5F5')};
   color: ${(({ isActive }) => isActive ? '#fff' : '#333333')};
   transition: background-color .5s .15s ease-in-out, color .5s ease-in-out;
@@ -51,12 +53,27 @@ const SliderItem = styled.div<SliderItemProps>`
   }
 
   p {
-    font-size: 16px;
+    font-size: 1.7rem;
+    line-height: 160%;
     padding: 5%;
 
     @media screen and (max-width: 768px) {
-      font-size: ${(({ theme }) => theme.font.size.s)};
-      padding: 2%;
+      font-size: 1.4rem;
+      padding: 3%;
+    }
+  }
+
+  img {
+    border-radius: 0 0 20px 20px;
+    width: 100%;
+    height: 43%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    object-fit: cover;
+
+    @media screen and (max-height: 600px) {
+      display: none;
     }
   }
 
@@ -74,6 +91,7 @@ const SwiperButton = styled.button<SwiperButtonProps>`
   outline: none;
   border: none;
   background: transparent;
+  z-index: 999;
   bottom: 50%;
   ${(( { position }) => position === 'right' ? 'right: 30%' : 'left: 30%')};
 
@@ -96,8 +114,42 @@ export const SwiperPagination = styled.div`
   z-index: -1;
 `
 
+type Offer = {
+  id: string
+  title: string,
+  description: string,
+  image: {
+    url: string
+  }
+}
+
+type Data = {
+  elizabeth: {
+    offers: [
+      Offer
+    ]
+  }
+}
+
 const SwiperCards = () => {
 
+  const data = useStaticQuery<Data>(graphql`
+    query ElizabethOfferQuery {
+      elizabeth {
+        offers {
+          id
+          title
+          description
+          image {
+            url
+          }
+        }
+      }
+    }
+  `)
+
+  const offers = data.elizabeth.offers;
+ 
 
   const [ slideIndex, setSlideIndex ] = useState(0);
 
@@ -127,18 +179,20 @@ const SwiperCards = () => {
         }}
       >
 
-        {/* {
-          slides.map(({ id, title, discription, imageName, imageAlt }) => (
-              <SwiperSlide key={id}>
-                <SliderItem isActive={id===slideIndex ? true : false}>
-                  <h2>{title}</h2>
-                  <p>{discription}</p>
-                  <img src={`/images/${imageName}`} />
-                </SliderItem>
-              </SwiperSlide>
-            )
+      {
+        offers.map(({ id, title, description, image }, index) => (
+            <SwiperSlide key={id}>
+              <SliderItem isActive={index===slideIndex ? true : false}>
+                <h2>{title}</h2>
+                <p>{description}</p>
+                {
+                  image ? ( <img src={image.url} alt={title}/> ) : <></>  
+                }
+              </SliderItem>
+            </SwiperSlide>
           )
-        } */}
+        )
+      }
       
 
       </StyledSwiper>

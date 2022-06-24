@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, MouseEvent } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import {
     NavWrapper,
     LogoImage,
@@ -24,8 +24,11 @@ const Navbar = () => {
     e.preventDefault();
     
     setIsOpen(currentValue => !currentValue);
-    
   }
+
+  useEffect(() => {
+    isOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset';
+  }, [isOpen])
 
   return (
     <NavWrapper>

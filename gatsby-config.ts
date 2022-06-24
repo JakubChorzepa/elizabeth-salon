@@ -42,6 +42,14 @@ const config: GatsbyConfig = {
         display: `standalone`,
         icon: 'src/images/favicon.png',
       },
+    },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "ELIZABETH",
+        fieldName: "elizabeth",
+        url: "https://api-eu-central-1.graphcms.com/v2/cl4sdff3i1vio01z5az6uh6k6/master",
+      },
     }
   ]
 

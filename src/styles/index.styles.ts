@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const HeroSection = styled.section`
   display: flex;
   position: relative;
-  min-height: calc(100vh - 98px);
+  min-height: calc(100vh - 100px);
 `
 
 export const HeroText = styled.h1`
