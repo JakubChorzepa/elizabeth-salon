@@ -30,12 +30,19 @@ export const FlowerImageWrapper = styled.div`
   position: absolute;
   left: 0;
   bottom: 10px;
+  z-index: -1;
   
   @media screen and (max-height: 600px) {
     right: 0;
     left: unset;
     transform: rotate(270deg);
     opacity: 0.5;
+  }
+
+  @media screen and (max-width: 1500px) and (max-height: 820px) {
+    right: 0;
+    left: unset;
+    transform: rotate(270deg);
   }
 
   @media screen and (max-width: 768px) {
