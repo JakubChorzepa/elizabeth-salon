@@ -20,7 +20,8 @@ const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleHamburgerClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const toggleIsOpen = (e: MouseEvent<HTMLButtonElement>) => {
+    console.log('toggled');
     e.preventDefault();
     
     setIsOpen(currentValue => !currentValue);
@@ -47,7 +48,7 @@ const Navbar = () => {
       </NavLinksWrapper>
       <PhoneNumber>(+48) 602-137-250</PhoneNumber>
       <Hamburger
-          onClickHandler={handleHamburgerClick}
+          onClickHandler={toggleIsOpen}
           isOpen={isOpen}
         />
       <SideBar isOpen={isOpen}>

@@ -55,7 +55,7 @@ const SliderItem = styled.div<SliderItemProps>`
   p {
     font-size: 1.7rem;
     line-height: 160%;
-    padding: 5%;
+    padding: 4%;
 
     @media screen and (max-width: 768px) {
       font-size: 1.4rem;
@@ -66,13 +66,16 @@ const SliderItem = styled.div<SliderItemProps>`
   img {
     border-radius: 0 0 20px 20px;
     width: 100%;
-    height: 43%;
+    height: 40%;
     position: absolute;
     bottom: 0;
     left: 0;
     object-fit: cover;
 
-    @media screen and (max-height: 600px) {
+    @media screen and (max-height: 768px) {
+      height: 35%;
+    }
+    @media screen and (max-height: 630px) {
       display: none;
     }
   }
@@ -174,7 +177,7 @@ const SwiperCards = () => {
         onSlideChange={(swiper) => setSlideIndex(swiper.realIndex)}
         breakpoints={{
           768: {
-            slidesPerView: 2.5
+            slidesPerView: 2.3
           }
         }}
       >
