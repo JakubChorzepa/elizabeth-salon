@@ -21,7 +21,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleIsOpen = (e: MouseEvent<HTMLButtonElement>) => {
-    console.log('toggled');
     e.preventDefault();
     
     setIsOpen(currentValue => !currentValue);
