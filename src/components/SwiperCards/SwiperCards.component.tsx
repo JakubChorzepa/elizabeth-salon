@@ -46,7 +46,7 @@ const SliderItem = styled.div<SliderItemProps>`
   }
 
   h2 {
-    padding: 5%;
+    padding: 2vw;
     @media screen and (max-width: 768px) {
       font-size: ${(({ theme }) => theme.font.size.s)};
     }

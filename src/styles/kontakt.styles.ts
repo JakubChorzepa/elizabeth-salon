@@ -5,10 +5,10 @@ export const MainSection = styled.section`
   display: flex;
   flex-direction: row;
   min-height: 90vh;
-  padding: 3%;
+  padding: 5%;
 
   @media screen and (max-width: 1000px) {
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
 `
@@ -18,6 +18,7 @@ export const FindUsWrapper = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   flex-basis: 40%;
+  margin-bottom: 50px;
 
   @media screen and (max-width: 1000px) {
     flex-basis: auto;
@@ -37,20 +38,23 @@ export const ContactAndScheduleWrapper = styled.div`
     width: 90%;
     margin: 20px 0;
   }
+
+  p {
+    margin-left: 10px;
+    font-size: 1.6rem;
+  }
 `
 
-export const Contact = styled.div`
+export const InfromationsWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 `
 
 export const ContactInformationWrapper = styled.div`
-  margin: 10px 0;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
 
-  p {
-    margin-left: 10px;
-  }
 `

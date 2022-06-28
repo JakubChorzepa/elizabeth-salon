@@ -11,6 +11,7 @@ import Header from '../components/Header/Header.component';
 import SwiperCards from '../components/SwiperCards/SwiperCards.component';
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
+import FlowerBackground from "../components/FlowerBackground/FlowerBackground.component";
 
 const StyledHeader = styled(Header)`
   margin-top: 50px;
@@ -21,6 +22,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <>
+        <FlowerBackground topDistance={15} />
         <HeroSection>
           <HeroText>
             Cenimy <br /> 
