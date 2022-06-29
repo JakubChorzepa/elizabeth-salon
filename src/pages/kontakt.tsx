@@ -1,5 +1,6 @@
 import * as React from "react"
 import Header from "../components/Header/Header.component"
+import ContactForm from '../components/ContactForm/ContactForm.component'
 import Layout from "../components/Layout"
 import { useLoadScript } from '@react-google-maps/api'
 import Map from '../components/Map/Map.component'
@@ -57,9 +58,9 @@ const ContactPage = () => {
               <p>Piątek 09:00 - 16:00</p>
               <p>Sobota Na umówione godziny. Proszę dzwonić</p>
             </InfromationsWrapper>
-
           </ContactAndScheduleWrapper>
         </MainSection>
+        <ContactForm />
       </>
     </Layout>
   )

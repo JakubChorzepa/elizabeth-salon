@@ -18,7 +18,7 @@ export const FindUsWrapper = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   flex-basis: 40%;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
 
   @media screen and (max-width: 1000px) {
     flex-basis: auto;
@@ -40,7 +40,6 @@ export const ContactAndScheduleWrapper = styled.div`
   }
 
   p {
-    margin-left: 10px;
     font-size: 1.6rem;
   }
 `
@@ -48,7 +47,7 @@ export const ContactAndScheduleWrapper = styled.div`
 export const InfromationsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
 `
 
 export const ContactInformationWrapper = styled.div`
