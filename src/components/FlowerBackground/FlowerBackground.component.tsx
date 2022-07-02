@@ -12,7 +12,7 @@ const FlowerBacgkroundWrapper = styled.div<FlowerBackgroundProps>`
   top: ${(({ topDistance }) => `${topDistance}vh`)};
   left: -30px;
   z-index: -1;
-  opacity: 0.4;
+  opacity: 0.6;
   transform: rotate(90deg);
 `
 

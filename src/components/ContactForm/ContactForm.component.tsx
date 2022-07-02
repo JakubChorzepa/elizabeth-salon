@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Header from '../Header/Header.component'
+import useForm from './useFrom.hook'
+import validate, { validateInfoType } from './validateInfo';
 
 const StyledHeader = styled(Header)`
   margin-bottom: 25px;
@@ -23,6 +25,7 @@ const StyledContactForm = styled.form`
 `
 
 const FormLabel = styled.label`
+  margin-top: 20px;
   font-size: ${(({ theme }) => theme.font.size.s)};
 `
 
@@ -33,7 +36,6 @@ const FormInput = styled.input`
   display: flex;
   justify-content: center;
   border: ${(({ theme }) => theme.colors.text)} 1.9px solid;
-  margin-bottom: 18px;
   transition: border .15s ease-out, filter .2s 0.1s ease-in-out;
   border-radius: 3px;
 
@@ -50,7 +52,6 @@ const StyledTextArea = styled.textarea`
   height: 300px;
   justify-content: center;
   border: ${(({ theme }) => theme.colors.text)} 1.9px solid;
-  margin-bottom: 20px;
   transition: border, box-shadow .15s ease-out;
   border-radius: 3px;
 
@@ -74,6 +75,7 @@ const SubmitButton = styled.button.attrs({ type: 'submit' })`
   background-color: ${(({ theme }) => theme.colors.primary)};
   font-size: ${(({ theme }) => theme.font.size.s)};
   font-weight: 500;
+  margin-top: 20px;
   border-radius: 3px;
   width: 170px;
   padding: 15px;
@@ -84,25 +86,58 @@ const SubmitButton = styled.button.attrs({ type: 'submit' })`
   }
 `
 
+const ErrorMessage = styled.p`
+  font-size: 1.3rem;
+  color: #ff0033;
+`
+
 const ContactForm = () => {
+
+  const { handleChange, handleSubmit, errors } = useForm(validate);
+
   return (
     <ContactFormWrapper>
       <StyledHeader>Formularz kontaktowy</StyledHeader>
-      <StyledContactForm>
+      <StyledContactForm onSubmit={handleSubmit}>
         <FormLabel>Imie i nazwisko*</FormLabel>
-        <FormInput type='text' />
+        <FormInput 
+          type='text' 
+          name='fullName'
+          onChange={handleChange}
+          />
+
+          {errors.fullName && <ErrorMessage>{errors.fullName}</ErrorMessage>}
 
         <FormLabel>Adres e-mail*</FormLabel>
-        <FormInput type='email'/>
+        <FormInput
+          type='email' 
+          name='email'
+          onChange={handleChange}
+          />
+
+          {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
 
         <FormLabel>Number telefonu</FormLabel>
-        <FormInput type='tel'/>
+        <FormInput 
+          type='tel' 
+          name='phoneNumber'
+          onChange={handleChange}
+          />
 
         <FormLabel>Treść*</FormLabel>
-        <StyledTextArea />
+        <StyledTextArea 
+          name='messageContent'
+          maxLength={1500}
+          placeholder='Maksymalna ilość znaków: 1500'
+          onChange={handleChange}
+          />
+
+        {errors.messageContent && <ErrorMessage>{errors.messageContent}</ErrorMessage>}
 
         <SubmitButtonWrapper>
-          <SubmitButton>Wyślij</SubmitButton>
+          <SubmitButton>
+            Wyślij
+          </SubmitButton>
         </SubmitButtonWrapper>
 
       </StyledContactForm>
