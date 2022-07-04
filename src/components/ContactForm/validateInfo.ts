@@ -2,7 +2,8 @@ export type valuesType = {
   fullName: string,
   email: string,
   phoneNumber: string,
-  messageContent: string
+  messageContent: string,
+  "g-recaptcha-response": string
 }
 
 export type validateInfoType = (values: valuesType) => valuesType;
@@ -13,7 +14,8 @@ const validateInfo: validateInfoType = values => {
     fullName: '',
     email: '',
     phoneNumber: '',
-    messageContent: ''
+    messageContent: '',
+    "g-recaptcha-response": ''
   }
 
   // Full Name
@@ -27,6 +29,8 @@ const validateInfo: validateInfoType = values => {
 
   // Message Content
   if(!values.messageContent) errors.messageContent = "Wpisz swoją wiadomość";
+
+  if(!values["g-recaptcha-response"]) errors["g-recaptcha-response"] = "Użyj weryfikacji ReCAPTCHA";
 
   return errors;
 }

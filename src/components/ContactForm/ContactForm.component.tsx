@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import Header from '../Header/Header.component'
 import useForm from './useFrom.hook'
-import validate, { validateInfoType } from './validateInfo';
+import validate from './validateInfo';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const StyledHeader = styled(Header)`
   margin-bottom: 25px;
@@ -10,6 +11,7 @@ const StyledHeader = styled(Header)`
 
 const ContactFormWrapper = styled.div`
   padding: 5%;
+  transition: 5s ease-in-out;
 `
 
 const StyledContactForm = styled.form`
@@ -64,14 +66,18 @@ const StyledTextArea = styled.textarea`
 
 const SubmitButtonWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
   width: 100%;
 `
 
 const SubmitButton = styled.button.attrs({ type: 'submit' })`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   border: none;
   color: #fff;
+  width: 100px;
+  height: 50px;
   background-color: ${(({ theme }) => theme.colors.primary)};
   font-size: ${(({ theme }) => theme.font.size.s)};
   font-weight: 500;
@@ -91,56 +97,97 @@ const ErrorMessage = styled.p`
   color: #ff0033;
 `
 
+const StyledReCAPTCHA = styled(ReCAPTCHA)`
+  margin-top: 20px;
+`
+const Loader = styled.div`
+  width: 30px;
+  aspect-ratio: 4;
+  background: radial-gradient(circle closest-side,#fff 90%,#0000) 0/calc(100%/3) 100% space;
+  clip-path: inset(0 100% 0 0);
+  animation: d1 1s steps(4) infinite;
+  @keyframes d1 {to{clip-path: inset(0 -34% 0 0)}}
+`
+
+const SuccessMessage = styled.h2`
+ font-size: 20px;
+ color: ${(({ theme }) => theme.colors.text)};
+`
+
 const ContactForm = () => {
 
-  const { handleChange, handleSubmit, errors } = useForm(validate);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+ 
+  const submitForm = () => {
+    setIsSubmitted(true);
+  }
+
+  const { handleChange, handleSubmit, handleVerify, errors, isSubmitting } = useForm(submitForm, validate);
 
   return (
     <ContactFormWrapper>
       <StyledHeader>Formularz kontaktowy</StyledHeader>
-      <StyledContactForm onSubmit={handleSubmit}>
-        <FormLabel>Imie i nazwisko*</FormLabel>
-        <FormInput 
-          type='text' 
-          name='fullName'
-          onChange={handleChange}
-          />
 
-          {errors.fullName && <ErrorMessage>{errors.fullName}</ErrorMessage>}
+      {
+        isSubmitted ? (
+          <SuccessMessage>Pomyślnie wysłano wiadomość</SuccessMessage>
+        ) : (
+          <>
+            <StyledContactForm onSubmit={handleSubmit}>
+              <FormLabel>Imie i nazwisko*</FormLabel>
+              <FormInput 
+                type='text' 
+                name='fullName'
+                onChange={handleChange}
+                />
 
-        <FormLabel>Adres e-mail*</FormLabel>
-        <FormInput
-          type='email' 
-          name='email'
-          onChange={handleChange}
-          />
+                {errors.fullName && <ErrorMessage>{errors.fullName}</ErrorMessage>}
 
-          {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
+              <FormLabel>Adres e-mail*</FormLabel>
+              <FormInput
+                type='email' 
+                name='email'
+                onChange={handleChange}
+                />
 
-        <FormLabel>Number telefonu</FormLabel>
-        <FormInput 
-          type='tel' 
-          name='phoneNumber'
-          onChange={handleChange}
-          />
+                {errors.email && <ErrorMessage>{errors.email}</ErrorMessage>}
 
-        <FormLabel>Treść*</FormLabel>
-        <StyledTextArea 
-          name='messageContent'
-          maxLength={1500}
-          placeholder='Maksymalna ilość znaków: 1500'
-          onChange={handleChange}
-          />
+              <FormLabel>Number telefonu</FormLabel>
+              <FormInput 
+                type='tel' 
+                name='phoneNumber'
+                onChange={handleChange}
+                />
 
-        {errors.messageContent && <ErrorMessage>{errors.messageContent}</ErrorMessage>}
+              <FormLabel>Treść*</FormLabel>
+              <StyledTextArea 
+                name='messageContent'
+                maxLength={1500}
+                placeholder='Maksymalna ilość znaków: 1500'
+                onChange={handleChange}
+                />
 
-        <SubmitButtonWrapper>
-          <SubmitButton>
-            Wyślij
-          </SubmitButton>
-        </SubmitButtonWrapper>
+              {errors.messageContent && <ErrorMessage>{errors.messageContent}</ErrorMessage>}
 
-      </StyledContactForm>
+              <StyledReCAPTCHA 
+                sitekey={process.env.RECAPTCHA_KEY ?? ''}
+                onChange={handleVerify}
+              />
+
+              {errors["g-recaptcha-response"] && <ErrorMessage>{errors["g-recaptcha-response"]}</ErrorMessage>}
+
+              <SubmitButtonWrapper>
+                <SubmitButton disabled={isSubmitting ? true: false }>
+                  {
+                    isSubmitting ? <Loader /> : 'Wyślij'
+                  }
+                </SubmitButton>
+              </SubmitButtonWrapper>
+            </StyledContactForm>
+          </>
+        )
+      }
+
     </ContactFormWrapper>
   )
 }

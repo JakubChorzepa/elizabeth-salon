@@ -32,7 +32,6 @@ const DirectionLink = styled.a`
 
 
 const Map = () => {
-  console.log('rerender')
 
   const lats = { lat: 50.11655569476691, lng: 22.23283049987109 };
 
