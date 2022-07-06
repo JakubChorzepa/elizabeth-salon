@@ -56,7 +56,7 @@ const ContactPage = () => {
               <p>Środa 11:00 - 18:00</p>
               <p>Czwartek 09:00 - 16:00</p>
               <p>Piątek 09:00 - 16:00</p>
-              <p>Sobota Na umówione godziny. Proszę dzwonić</p>
+              <p>Sobota na umówione godziny. Proszę dzwonić</p>
             </InfromationsWrapper>
           </ContactAndScheduleWrapper>
         </MainSection>

@@ -155,7 +155,7 @@ const SwiperCards = () => {
  
 
   const [ slideIndex, setSlideIndex ] = useState(0);
-
+  
   return (
     <>
       <StyledSwiper
