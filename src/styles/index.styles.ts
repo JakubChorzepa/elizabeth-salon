@@ -39,7 +39,7 @@ export const FlowerImageWrapper = styled.div`
     opacity: 0.5;
   }
 
-  @media screen and (max-width: 1500px) and (max-height: 820px) {
+  @media screen and (max-width: 1570px) and (max-height: 870px) {
     right: 0;
     left: unset;
     transform: rotate(270deg);
@@ -56,7 +56,7 @@ export const HeroImageWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  @media screen and (max-width: 1400px){
+  @media screen and (max-width: 1350px){
     display: none;
   }
 `
