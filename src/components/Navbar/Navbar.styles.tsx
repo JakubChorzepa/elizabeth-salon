@@ -3,7 +3,11 @@ import { Link } from 'gatsby';
 
 type StyledSideBarProps = {
   isOpen: boolean
-} 
+}
+
+type PhoneCopiedInformationProps = {
+  isCopied: boolean
+}
 
 export const NavWrapper = styled.nav`
   display: flex;
@@ -61,6 +65,7 @@ export const PhoneNumber = styled.div`
   margin: 0 20px;
   font-weight: 500;
   font: ${(({ theme }) => theme.font.size.s)} 500;
+  cursor: pointer;
 
   @media screen and (max-width: 1000px) {
     display: none;
@@ -96,4 +101,28 @@ export const SidebarPhoneNumber = styled.div`
   color: #fff;
   font-size: ${(({ theme }) => theme.font.size.s)};
   margin: 50px 0;
+`
+
+export const PhoneCopiedInformation = styled.div<PhoneCopiedInformationProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+  font-size: ${(({ theme }) => theme.font.size.s)};
+  padding: 12px 25px;
+  position: fixed;
+  z-index: 999;
+  top: ${(({ isCopied }) => isCopied ? '20px' : '-100px')};
+  left: 50%;
+  background-color: #fff;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  box-shadow: 3px 5px 24px -12px rgba(66, 68, 90, 1);
+  transition: all .2s ease-in-out;
+
+  @media screen and (max-width: 768px) {
+    font-size: ${(({ theme }) => theme.font.size.xs)};
+  }
+
 `

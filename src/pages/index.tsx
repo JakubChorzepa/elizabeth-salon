@@ -24,11 +24,11 @@ const IndexPage = () => {
       <>
         <FlowerBackground topDistance={15} />
         <HeroSection>
-          <HeroText>
-            Cenimy <br /> 
-            sobie <br /> 
-            <span>piękno</span>
-          </HeroText>
+            <HeroText>
+              Cenimy <br /> 
+              sobie <br /> 
+              <span>piękno</span>
+            </HeroText>
           <HeroImageWrapper>
             <StaticImage src='../images/Woman.png' alt='kobieta' />
           </HeroImageWrapper>

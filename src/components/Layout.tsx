@@ -4,6 +4,7 @@ import SEO from './SEO';
 import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import Navbar from './Navbar/Navbar.component';
+import Footer from './Footer/Footer';
 
 type Props = {
   title?: string,
@@ -21,6 +22,7 @@ const Layout = ({ title, description, children }: Props) => {
         <Navbar />
         {children}
       </>
+      <Footer />
     </ThemeProvider>
   )
 };

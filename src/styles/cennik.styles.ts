@@ -6,8 +6,8 @@ export const PriceListPageWrapper = styled.div`
 
 export const PriceListWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
-  grid-gap: 120px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 100px;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;

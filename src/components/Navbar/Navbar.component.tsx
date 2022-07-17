@@ -10,7 +10,8 @@ import {
     SideBar,
     SideBarLinkWrapper,
     StyledSideBarLink,
-    SidebarPhoneNumber
+    SidebarPhoneNumber,
+    PhoneCopiedInformation
   } from './Navbar.styles';
 
 import { StaticImage } from 'gatsby-plugin-image';
@@ -19,6 +20,7 @@ import Hamburger from '../Hamburger/Hamburger.component';
 const Navbar = () => {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
   const toggleIsOpen = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -26,12 +28,31 @@ const Navbar = () => {
     setIsOpen(currentValue => !currentValue);
   }
 
+  const copyPhoneNumber = () => {
+    if (navigator.clipboard && window.isSecureContext) {
+      if(!isCopied) {
+        navigator.clipboard.writeText('602 137 250').then(() => {
+  
+          setIsCopied(true);
+    
+          setTimeout(() => {
+            setIsCopied(false);
+          }, 2000);
+        })
+      }
+    } else {
+      
+    }
+  }
+  
+
   useEffect(() => {
     isOpen ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'unset';
   }, [isOpen])
 
   return (
     <NavWrapper>
+      <PhoneCopiedInformation isCopied={isCopied}>Skopiowano numer</PhoneCopiedInformation>
       <LogoImage>
         <StyledLink to='/'>
           <StaticImage 
@@ -45,7 +66,7 @@ const Navbar = () => {
         <StyledNavbarLink to='/kontakt'>Kontakt</StyledNavbarLink>
         <StyledNavbarLink to='/cennik'>Cennik</StyledNavbarLink>
       </NavLinksWrapper>
-      <PhoneNumber>(+48) 602-137-250</PhoneNumber>
+      <PhoneNumber onClick={copyPhoneNumber}>(+48) 602-137-250</PhoneNumber>
       <Hamburger
           onClickHandler={toggleIsOpen}
           isOpen={isOpen}
@@ -54,7 +75,7 @@ const Navbar = () => {
         <SideBarLinkWrapper>
           <StyledSideBarLink to='/kontakt'>Kontakt</StyledSideBarLink>
           <StyledSideBarLink to='/cennik'>Cennik</StyledSideBarLink>
-          <SidebarPhoneNumber>(+48) 602-137-250</SidebarPhoneNumber>
+          <SidebarPhoneNumber onClick={copyPhoneNumber}>(+48) 602-137-250</SidebarPhoneNumber>
         </SideBarLinkWrapper>   
       </SideBar>
     </NavWrapper>

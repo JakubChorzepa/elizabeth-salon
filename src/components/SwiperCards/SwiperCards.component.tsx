@@ -26,14 +26,14 @@ type SliderItemProps = {
 const SliderItem = styled.div<SliderItemProps>`
   position: relative;
   margin: 0 auto;
-  min-height: 60vh;
+  min-height: 58vh;
   width: 60%;
   border-radius: 20px;
   
   z-index: 999;
   background-color: ${(({ isActive }) => isActive ? '#D64ACE' : '#F5F5F5')};
   color: ${(({ isActive }) => isActive ? '#fff' : '#333333')};
-  transition: background-color .5s .15s ease-in-out, color .5s ease-in-out;
+  transition: background-color .3s ease-in-out, color .3s ease-in-out;
   text-align: center;
   
 
@@ -45,6 +45,10 @@ const SliderItem = styled.div<SliderItemProps>`
     width: 90%;
   }
 
+  @media screen and (max-height: 667px) {
+    height: 65vh;
+  }
+
   h2 {
     padding: 2vw;
     @media screen and (max-width: 768px) {
@@ -54,19 +58,25 @@ const SliderItem = styled.div<SliderItemProps>`
 
   p {
     font-size: 1.7rem;
-    line-height: 160%;
+    line-height: 150%;
     padding: 4%;
+    padding-bottom: 42%;
 
     @media screen and (max-width: 768px) {
       font-size: 1.4rem;
       padding: 3%;
+      padding-bottom: 34%;
+    }
+
+    @media screen and (max-height: 630px) {
+      padding-bottom: 5%;
     }
   }
 
   img {
     border-radius: 0 0 20px 20px;
     width: 100%;
-    height: 40%;
+    height: 42%;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -154,7 +164,7 @@ const SwiperCards = () => {
   const offers = data.elizabeth.offers;
  
 
-  const [ slideIndex, setSlideIndex ] = useState(0);
+  const [slideIndex, setSlideIndex] = useState(0);
   
   return (
     <>
