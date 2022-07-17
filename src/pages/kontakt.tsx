@@ -24,7 +24,7 @@ const StyledHeader = styled(Header)`
 // markup
 const ContactPage = () => {
   const { isLoaded }  = useLoadScript({
-    googleMapsApiKey: process.env.GOOGLE_API_KEY ?? '',
+    googleMapsApiKey: 'AIzaSyBuiy4O9dYBmIyeiO0H2fM9AF97JIkuDBc',
   })
   return (
     <Layout>

@@ -170,7 +170,7 @@ const ContactForm = () => {
               {errors.messageContent && <ErrorMessage>{errors.messageContent}</ErrorMessage>}
 
               <StyledReCAPTCHA 
-                sitekey={process.env.RECAPTCHA_KEY ?? ''}
+                sitekey='6Leh1cAgAAAAACwZavyq0N4kFEi987U_95mfdiFW'
                 onChange={handleVerify}
               />
 

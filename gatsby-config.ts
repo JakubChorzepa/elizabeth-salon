@@ -1,10 +1,7 @@
 import type { GatsbyConfig } from "gatsby";
 
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
-
 const config: GatsbyConfig = {
+  pathPrefix: '/',
   siteMetadata: {
     title: `Salon Elizabeth`,
     description: `Salon kosmetyczny elizabeth to gabinet, którego atutem jest wrażliwość na piękno. Oferowany jest szereg zabiegów takich jak makijaże, hanny, zabiegi na twarz oraz wiele innych.`,
