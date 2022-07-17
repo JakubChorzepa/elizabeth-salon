@@ -56,7 +56,7 @@ export const HeroImageWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  @media screen and (max-width: 1500px){
+  @media screen and (max-width: 1400px){
     display: none;
   }
 `
