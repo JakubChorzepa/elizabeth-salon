@@ -12,6 +12,7 @@ import SwiperCards from '../components/SwiperCards/SwiperCards.component';
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import FlowerBackground from "../components/FlowerBackground/FlowerBackground.component";
+import ClientOnly from "../components/ClientOnly/ClientOnly";
 
 const StyledHeader = styled(Header)`
   margin-top: 50px;
@@ -43,7 +44,9 @@ const IndexPage = () => {
           <StyledHeader>
             Oferta
           </StyledHeader>
-          <SwiperCards />
+          <ClientOnly>
+            <SwiperCards />
+          </ClientOnly>
         </OfferSection>
       </>
     </Layout>
