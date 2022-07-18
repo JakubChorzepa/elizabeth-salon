@@ -84,10 +84,11 @@ export const SideBar = styled.div<StyledSideBarProps>`
 `
 
 export const SideBarLinkWrapper = styled.div`
+  height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
-  margin-top: 25vh;
 `
 
 export const StyledSideBarLink = styled(StyledLink)`
@@ -101,6 +102,10 @@ export const SidebarPhoneNumber = styled.div`
   color: #fff;
   font-size: ${(({ theme }) => theme.font.size.s)};
   margin: 50px 0;
+
+  @media screen and (max-height: 560px) {
+    margin: 15px 0;
+  }
 `
 
 export const PhoneCopiedInformation = styled.div<PhoneCopiedInformationProps>`

@@ -40,8 +40,6 @@ const Navbar = () => {
           }, 2000);
         })
       }
-    } else {
-      
     }
   }
   
@@ -63,6 +61,7 @@ const Navbar = () => {
         </StyledLink>
       </LogoImage>
       <NavLinksWrapper>
+        <StyledNavbarLink to='/'>Strona główna</StyledNavbarLink>
         <StyledNavbarLink to='/kontakt'>Kontakt</StyledNavbarLink>
         <StyledNavbarLink to='/cennik'>Cennik</StyledNavbarLink>
       </NavLinksWrapper>
@@ -73,6 +72,7 @@ const Navbar = () => {
         />
       <SideBar isOpen={isOpen}>
         <SideBarLinkWrapper>
+          <StyledSideBarLink to='/'>Strona główna</StyledSideBarLink>
           <StyledSideBarLink to='/kontakt'>Kontakt</StyledSideBarLink>
           <StyledSideBarLink to='/cennik'>Cennik</StyledSideBarLink>
           <SidebarPhoneNumber onClick={copyPhoneNumber}>(+48) 602-137-250</SidebarPhoneNumber>

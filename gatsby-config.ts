@@ -14,7 +14,17 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    "gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-plugin-sharp", "gatsby-transformer-sharp", "gatsby-plugin-sitemap", "gatsby-plugin-react-helmet", 
+    "gatsby-plugin-styled-components", "gatsby-plugin-image", "gatsby-transformer-sharp", "gatsby-plugin-sitemap", "gatsby-plugin-react-helmet",
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaults: {
+          placeholder: `none`,
+          backgroundColor: `transparent`,
+        }
+      }
+
+    },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
